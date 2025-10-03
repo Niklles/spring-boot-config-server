@@ -25,7 +25,17 @@ spring:
   profiles:
     active: jdbc
   jpa:
+    hibernate:
+      ddl-auto: update
     show-sql: true
+    open-in-view: false
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    properties:
+      hibernate:
+        show_sql: true
+        format_sql: true
+        cache:
+          use_second_level_cache: false
 
 server:
   port: 8080

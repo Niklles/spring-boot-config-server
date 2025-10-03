@@ -2,6 +2,7 @@ package ru.ufs.mas.service;
 
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -11,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import ru.ufs.mas.domain.Properties;
 import ru.ufs.mas.repository.PropertiesRepository;
-import java.net.URISyntaxException;
 import java.util.Optional;
 
 @RestController
@@ -49,7 +49,7 @@ public class PropertiesService {
     }
 
     @PutMapping("/props")
-    public Optional<Properties> update(@Valid @RequestBody Properties insuranceProperties) throws URISyntaxException {
+    public Optional<Properties> update(@Valid @RequestBody Properties insuranceProperties) {
         Optional<Properties> existing = repository.findOneByApplicationAndProfileAndLabelAndKey(
                 insuranceProperties.getApplication(), insuranceProperties.getProfile(), insuranceProperties.getLabel(),
                 insuranceProperties.getKey());
@@ -59,6 +59,7 @@ public class PropertiesService {
         });
     }
 
+    @Transactional
     @PostMapping("/props")
     public Properties create(@Valid @RequestBody Properties insuranceProperties) {
         return repository.save(insuranceProperties);

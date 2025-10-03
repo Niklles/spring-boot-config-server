@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping(path = "/api")
 public class ConfigClientApi {
-	@Value("${name_x.property_xx}")
+	@Value("${name.app}")
 	private String aConf;
 	
 	@GetMapping
