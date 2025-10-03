@@ -1,6 +1,9 @@
 spring:
   application:
-    name: config-client
+    name: configclient
   cloud:
     config:
       uri: http://localhost:8080
+  config:
+    import:
+      - configserver:http://localhost:8080
