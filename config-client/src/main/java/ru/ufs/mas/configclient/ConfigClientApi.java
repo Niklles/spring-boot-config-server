@@ -10,10 +10,10 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping(path = "/api")
 public class ConfigClientApi {
 	@Value("${name.app}")
-	private String aConf;
+	private String aConfig;
 	
 	@GetMapping
-	public String getConf() {
-		return this.aConf;
+	public String getConfig() {
+		return this.aConfig;
 	}
 }
