@@ -2,11 +2,11 @@ package ru.ufs.mas.domain;
 
 import java.io.Serializable;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 
 import lombok.Data;
@@ -16,18 +16,23 @@ import lombok.Data;
 @Data
 public class Properties implements Serializable {
 
-    /**
-     *
-     */
-    private static final long serialVersionUID = 6747531716778688077L;
-
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SEQ_PROPERTIES")
-    @SequenceGenerator(name="SEQ_PROPERTIES", schema="CONFIG", sequenceName="SEQ_PROPERTIES_ID", allocationSize=1)
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
+    private int id;
+
+    @Column(name = "application")
     private String application;
+
+    @Column(name = "profile")
     private String profile;
+
+    @Column(name = "label")
     private String label;
+
+    @Column(name = "key")
     private String key;
+
+    @Column(name = "value")
     private String value;
 }

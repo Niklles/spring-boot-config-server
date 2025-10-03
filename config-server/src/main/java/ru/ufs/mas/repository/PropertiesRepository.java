@@ -9,16 +9,16 @@ import java.util.Optional;
 @Repository
 public interface PropertiesRepository extends JpaRepository<Properties, Long>  {
 
-    public List<Properties> findByApplication(String application);
+    List<Properties> findByApplication(String application);
 
-    public List<Properties> findByApplicationAndProfile(String application, String profile);
+    List<Properties> findByApplicationAndProfile(String application, String profile);
 
-    public List<Properties> findByApplicationAndProfileAndLabel(String application, String profile, String label);
+    List<Properties> findByApplicationAndProfileAndLabel(String application, String profile, String label);
 
-    public List<Properties> findByApplicationAndProfileAndLabelAndKey(String application, String profile,
-                                                                      String label, String key);
+    List<Properties> findByApplicationAndProfileAndLabelAndKey(String application, String profile,
+                                                               String label, String key);
 
-    public Optional<Properties> findOneByApplicationAndProfileAndLabelAndKey(String application, String profile,
+    Optional<Properties> findOneByApplicationAndProfileAndLabelAndKey(String application, String profile,
                                                                              String label, String key);
 
 }
