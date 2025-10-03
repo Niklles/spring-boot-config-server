@@ -1,0 +1,31 @@
+spring:
+
+  cloud:
+    config:
+      server:
+        git:
+          uri: "https://github.com/Niklles/config-server"
+          default-label: main
+        jdbc:
+          sql: select key, value from  properties where application=? and profile=? and label=?
+          order: 1
+
+  datasource:
+    url: "jdbc:postgresql://localhost:5432/postgres"
+    username: postgres
+    password: password
+    driver-class-name: org.postgresql.Driver
+    hikari:
+      connectionTimeout: 10000
+      idleTimeout: 600000
+      maxLifetime: 1800000
+      minimumIdle: 5
+      maximum-pool-size: 40
+      leak-detection-threshold: 90000
+  profiles:
+    active: jdbc
+  jpa:
+    show-sql: true
+
+server:
+  port: 8080
